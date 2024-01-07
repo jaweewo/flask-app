@@ -14,14 +14,14 @@ spec:
         app: flask-db
     spec:
       affinity:
-        podAffinity:
+        podAntiAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
           - labelSelector:
               matchExpressions:
               - key: app
                 operator: In
                 values:
-                - flask-app
+                - flask-db
             topologyKey: "kubernetes.io/hostname"
       containers:
       - name: flask-db
@@ -30,6 +30,13 @@ spec:
         - configMapRef:
             name: db-config
         env:
+        - name: MYSQL_USER 
+          value: flaskuser
+        - name: MYSQL_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: db-secret
+              key: MYSQL_PASSWORD
         - name: MYSQL_ROOT_PASSWORD
           valueFrom:
             secretKeyRef:
@@ -42,7 +49,7 @@ spec:
               key: MYSQL_DATABASE
         volumeMounts:
         - name: mysql-pvc
-            mountPath: /var/lib/mysql
+          mountPath: /var/lib/mysql
         ports:
         - containerPort: 3306
   volumeClaimTemplates:

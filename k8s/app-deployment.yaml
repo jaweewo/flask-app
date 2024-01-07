@@ -15,14 +15,13 @@ spec:
       affinity:
         podAntiAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
-            - weight: 100
-          podAffinityTerm:
-            labelSelector:
+          - labelSelector:
               matchExpressions:
-                - key: app
-              operator: In
-              values:
+              - key: app
+                operator: In
+                values:
                 - flask-app
+            topologyKey: "kubernetes.io/hostname"
             topologyKey: "kubernetes.io/hostname"
       containers:
         - name: flask-app
