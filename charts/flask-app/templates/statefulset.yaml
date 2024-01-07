@@ -7,9 +7,9 @@ metadata:
 spec:
   serviceName: flask-db
   replicas: 1
-  #selector:
-    #matchLabels:
-      #app: {{ .Values.labels.db }}
+  selector:
+    matchLabels:
+      app: {{ .Values.labels.db }}
   template:
     metadata:
       labels:
