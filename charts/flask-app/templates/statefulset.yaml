@@ -23,7 +23,7 @@ spec:
               - key: app
                 operator: In
                 values:
-                - {{ include "flask-app.fullname" . }}-db
+                - {{ .Values.labels.db }}
             topologyKey: "kubernetes.io/hostname"
       containers:
       - name: mysql
