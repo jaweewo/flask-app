@@ -11,7 +11,7 @@ labels:
 service:
   type: NodePort
   port: 5000
-  nodeport: 30007
+  nodePort: 30007
 dbservice:
   type: ClusterIP
   port: 3306
