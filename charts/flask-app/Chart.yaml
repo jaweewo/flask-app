@@ -1,0 +1,6 @@
+apiVersion: v2
+name: flask-app
+description: Aplicación Flask con MySQL para Keepcoding DevOps Bootcamp
+type: application
+version: 1.0.0
+appVersion: "1.0"

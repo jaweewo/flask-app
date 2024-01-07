@@ -1,0 +1,12 @@
+apiVersion: v1
+entries:
+  flask-app:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    description: A Helm chart for Kubernetes
+    digest: 4d497bd844409d9c87df87dfe748cbcf135dcca93346980f9bb9184086c8f51f
+    name: flask-app
+    type: application
+    urls:
+    - charts/flask-app-1.0.0.tgz
+    version: 1.0.0

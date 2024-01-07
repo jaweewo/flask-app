@@ -1,0 +1,50 @@
+replicas: 1
+image:
+  repository: jesusod/flask-app
+  pullPolicy: Always
+  tag: "latest"
+
+labels:
+  db: mysql
+  app: flask-app
+
+service:
+  type: NodePort
+  port: 5000
+
+dbservice:
+  type: ClusterIP
+  port: 3306
+
+ingress:
+  enabled: true
+  host: localhost
+  pathType: Prefix
+
+mysql:
+  MYSQL_USER: "flaskuser"
+  MYSQL_PASSWORD: "cGF0b2RlZ29tYQ=="
+  MYSQL_DATABASE: "contador-db"
+  MYSQL_ROOT_PASSWORD: "root1234"
+  mount_path: "/var/lib/mysql"
+
+configMap:
+  MYSQL_DB: "contador-db"
+  MYSQL_USER: "flaskuser"
+  MYSQL_HOST: "flask-db"
+
+autoscaling:
+  enabled: true
+  minReplicas: 1
+  maxReplicas: 10
+  targetCPUUtilizationPercentage: 80
+
+persistentVolumeClaim:
+  enabled: true
+  accessModes:
+    - ReadWriteOnce
+  size: 1Gi
+
+
+
+

@@ -1,0 +1,20 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mysql-initdb-config
+data:
+  db.sh: |
+    #!/bin/bash
+
+    mysql --password=root1234 -u root <<EOS
+    CREATE DATABASE contador-db;
+    USE contador-db;
+
+
+    CREATE TABLE tabla_contador (
+    contador int NOT NULL
+    );
+
+    INSERT INTO tabla_contador VALUES (0);
+    EOS

@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "flask-app.fullname" . }}-db
+  labels:
+    app: {{ .Values.labels.db }}
+spec:
+  type: {{ .Values.dbservice.type }}
+  ports:
+    - port: {{ .Values.dbservice.port }}
+      targetPort: {{ .Values.dbservice.port }}
+  selector:
+    app: {{ .Values.labels.db }}

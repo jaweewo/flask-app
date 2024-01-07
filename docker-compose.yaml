@@ -1,0 +1,27 @@
+version: '3.9'
+
+services:
+  app:
+    environment:
+      MYSQL_DB: "contador-db"
+      MYSQL_USER: "flaskuser"
+      MYSQL_PASSWORD: "patodegoma"
+      MYSQL_HOST: "db01"
+    build: .
+    ports:
+     - 5000:5000
+    depends_on:
+      - db01
+  db01:
+    image: mysql
+    environment:
+     MYSQL_ROOT_PASSWORD: "root1234"
+     MYSQL_DATABASE: "contador-db"
+     MYSQL_USER: "flaskuser"
+     MYSQL_PASSWORD: "patodegoma"
+    volumes:
+     - "./db.sh:/docker-entrypoint-initdb.d/db.sh"
+     - "mysql-data:/var/lib/mysql"
+
+volumes:
+ mysql-data:

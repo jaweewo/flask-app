@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "flask-app.fullname" . }}-db-config
+data:
+  MYSQL_ROOT_PASSWORD: "{{ .Values.configMap.MYSQL_ROOT_PASSWORD }}"
+  MYSQL_DB: "{{ .Values.configMap.MYSQL_DB }}"
+  MYSQL_USER: "{{ .Values.configMap.MYSQL_USER }}"
+  MYSQL_PASSWORD: "{{ .Values.configMap.MYSQL_PASSWORD }}"
+  MYSQL_HOST: "{{ .Values.configMap.MYSQL_HOST }}"

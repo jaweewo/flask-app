@@ -1,0 +1,4 @@
+flask
+flask-mysqldb
+json-logging
+prometheus_flask_exporter

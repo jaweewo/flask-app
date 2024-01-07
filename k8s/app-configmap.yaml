@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: db-config
+data:
+  MYSQL_ROOT_PASSWORD: "root1234"
+  MYSQL_DB: "contador-db"
+  MYSQL_USER: "flaskuser"
+  MYSQL_PASSWORD: "patodegoma"
+  MYSQL_HOST: "flask-db"
