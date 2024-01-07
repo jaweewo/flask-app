@@ -11,6 +11,9 @@ spec:
     #matchLabels:
       #app: {{ .Values.labels.db }}
   template:
+    metadata:
+      labels:
+        app: {{ .Values.labels.db }}
     spec:
       affinity:
         podAffinity:
